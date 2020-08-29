@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sweep the Mine!</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <h1 class="title">
+    <span class="title-letter">S</span>
+    <span class="title-letter">W</span>
+    <span class="title-letter">E</span>
+    <span class="title-letter">E</span>
+    <span class="title-letter">P</span>
+    <span class="title-space">&nbsp;</span>
+    <span class="title-letter">T</span>
+    <span class="title-letter">H</span>
+    <span class="title-letter">E</span>
+    <span class="title-space">&nbsp;</span>
+    <span class="title-letter">M</span>
+    <span class="title-letter">I</span>
+    <span class="title-letter">N</span>
+    <span class="title-letter">E</span>
+  </h1>
+  <div class="container">
+    <div class="start-form">
+      <h3>Welcome to sweep the mine. Your objective is to set a flag on each mine given the clues on the board. You can set your flag by right-clicking on your mouse or pressing and holding on mobile.</h3>
+      <h2>Choose your difficulty:</h2>
+      <div id="radio-group">
+        <div class="radio-btns">
+          <label for="easy">Easy</label>
+          <input type="radio" name="difficulty" id="easy" value="10">
+        </div>
+        <div class="radio-btns">
+          <label for="medium">Medium</label>
+          <input type="radio" name="difficulty" id="medium" value="15" checked>
+        </div>
+        <div class="radio-btns">
+          <label for="hard">Hard</label>
+          <input type="radio" name="difficulty" id="hard" value="20">
+        </div>
+      </div>
+      <button id="start">Start!</button>
+    </div>
+    <div id="game-container" class="hide">
+      <div class="game-info">
+        <p>Bombs: <span id="bombs"></span></p>
+        <p>Flags Remaining: <span id="flags"></span></p>
+      </div>
+      <div class="game-over hide">
+        <p>Game Over!</p>
+        <button class="restart">Play Again?</button>
+      </div>
+      <div class="game"></div>
+    </div>
+  </div>
+  <div class="game-over-flash"></div>
+</body>
+</html>
