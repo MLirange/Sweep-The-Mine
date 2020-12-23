@@ -92,7 +92,17 @@ function game() {
       square.addEventListener('click', e => {
         const xPos = e.pageX;
         const yPos = e.pageY;
-        click(square, xPos, yPos);
+        const action = document.querySelector('input[name="action"]:checked').value;
+
+        console.log(action);
+
+        if (action === "check") {
+          click(square, xPos, yPos);
+        } else if (action === "flag") {
+          addFlag(square);
+        } else {
+          alert('Why are you messing with my radio buttons in the dev tools?');
+        }
       });
 
 
@@ -262,14 +272,14 @@ function game() {
 
   function gameOver(square, xPos, yPos) {
     const gameOverFlash = document.querySelector('.game-over-flash');
-    const gameInfo = document.querySelector('.game-info');
+    const gameInfo = document.querySelector('.game-info-container');
     const gameOverInfo = document.querySelector('.game-over');
     const gameOverBtn = document.querySelector('.restart');
     gameOverFlash.style.left = (xPos - 6) + "px";
     gameOverFlash.style.top = (yPos - 6) + "px";
     gameOverFlash.style.transition = 'transform 400ms ease-out, opacity 300ms ease-out, background-color 300ms ease-in-out 100ms';
     gameOverFlash.style.backgroundColor = '#d40';
-    gameOverFlash.style.transform = 'scale(5)';
+    gameOverFlash.style.transform = 'scale(10)';
     setTimeout(() => {
       gameOverFlash.style.opacity = '0';
     }, 400);
@@ -296,7 +306,7 @@ function game() {
 
   //check flags for matching bombs
   function checkForWin() {
-    const gameInfo = document.querySelector('.game-info');
+    const gameInfo = document.querySelector('.game-info-container');
     const gameOverInfo = document.querySelector('.game-over');
     const gameOverInfoText = document.querySelector('.game-over p');
     const gameOverBtn = document.querySelector('.restart');
