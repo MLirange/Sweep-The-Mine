@@ -94,14 +94,10 @@ function game() {
         const yPos = e.pageY;
         const action = document.querySelector('input[name="action"]:checked').value;
 
-        console.log(action);
-
         if (action === "check") {
           click(square, xPos, yPos);
         } else if (action === "flag") {
           addFlag(square);
-        } else {
-          alert('Why are you messing with my radio buttons in the dev tools?');
         }
       });
 
