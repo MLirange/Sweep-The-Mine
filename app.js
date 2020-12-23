@@ -269,7 +269,7 @@ function game() {
     gameOverFlash.style.top = (yPos - 6) + "px";
     gameOverFlash.style.transition = 'transform 400ms ease-out, opacity 300ms ease-out, background-color 300ms ease-in-out 100ms';
     gameOverFlash.style.backgroundColor = '#d40';
-    gameOverFlash.style.transform = 'scale(8)';
+    gameOverFlash.style.transform = 'scale(5)';
     setTimeout(() => {
       gameOverFlash.style.opacity = '0';
     }, 400);
