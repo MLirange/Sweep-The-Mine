@@ -79,6 +79,7 @@ function game() {
 
     //Run click function with firstSquare
     
+
     //create and append game squares to game board
     //square size is dependent on size of gameboard
     //Add corresponding class to shuffledSquares array
@@ -87,9 +88,13 @@ function game() {
       
       square.classList.add(shuffledSquares[i]);
 
-      square.addEventListener('click', function(e) {
-        click(square);
+
+      square.addEventListener('click', e => {
+        const xPos = e.pageX;
+        const yPos = e.pageY;
+        click(square, xPos, yPos);
       });
+
 
       square.oncontextmenu = function(e) {
         e.preventDefault();
@@ -151,14 +156,14 @@ function game() {
   }
 
   //logic for click events
-  function click(square) {
+  function click(square, xPos, yPos) {
     let currentId = square.id;
 
     //check status of square clicked
     if (isGameOver) return;
     if (square.classList.contains('checked') || square.classList.contains('flag')) return;
     if (square.classList.contains('bomb')) {
-      gameOver(square);
+      gameOver(square, xPos, yPos);
     } else {
       let total = parseInt(square.getAttribute('data'));
       if (total === 0) {
@@ -255,14 +260,16 @@ function game() {
     }, 40)
   }
 
-  function gameOver(square) {
+  function gameOver(square, xPos, yPos) {
     const gameOverFlash = document.querySelector('.game-over-flash');
     const gameInfo = document.querySelector('.game-info');
     const gameOverInfo = document.querySelector('.game-over');
     const gameOverBtn = document.querySelector('.restart');
-    gameOverFlash.style.transition = 'transform 400ms ease-in-out, opacity 300ms ease-out, background-color 300ms ease-in-out 100ms';
+    gameOverFlash.style.left = (xPos - 6) + "px";
+    gameOverFlash.style.top = (yPos - 6) + "px";
+    gameOverFlash.style.transition = 'transform 400ms ease-out, opacity 300ms ease-out, background-color 300ms ease-in-out 100ms';
     gameOverFlash.style.backgroundColor = '#d40';
-    gameOverFlash.style.transform = 'scale(35)';
+    gameOverFlash.style.transform = 'scale(10)';
     setTimeout(() => {
       gameOverFlash.style.opacity = '0';
     }, 400);
@@ -275,6 +282,7 @@ function game() {
         location.reload();
       });
     }, 401);
+
     isGameOver = true;
 
     gameSquares.forEach(square => {
