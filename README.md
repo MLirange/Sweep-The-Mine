@@ -6,6 +6,6 @@ to the core project such as mobile layout, multiple difficulties,
 and animations.
 
 
-Project can be found at:
+Live project can be found at:
 
 https://mlirange.github.io/Sweep-The-Mine/
